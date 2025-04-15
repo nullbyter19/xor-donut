@@ -109,5 +109,5 @@ a.click();
 ## 👨‍💻 Credits
 
 Presented by: **Milton Silva**  
-Cybersecurity Team Leader at Visionware  
+Security Researcher 
 [LinkedIn](https://www.linkedin.com/in/milton-araujo)
