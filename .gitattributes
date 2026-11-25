@@ -1,0 +1,18 @@
+# Normalize line endings on commit, work with native endings in the worktree.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.exe binary
+*.dll binary
+*.bin binary
+*.pyc binary
+
+# Keep generated vendored code out of the language statistics.
+dist/** linguist-generated=true
